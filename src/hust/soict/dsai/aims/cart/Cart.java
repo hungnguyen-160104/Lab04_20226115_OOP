@@ -2,6 +2,7 @@ package hust.soict.dsai.aims.cart;
 
 import hust.soict.dsai.aims.media.Media;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Cart {
     // Dùng ArrayList<Media> để chứa các đối tượng Media
@@ -42,5 +43,56 @@ public class Cart {
                 System.out.println(media);
             }
         }
+    }
+
+    // Phương thức tìm kiếm Media trong giỏ hàng theo tiêu đề
+    public Media searchMedia(String title) {
+        for (Media media : itemsOrdered) {
+            if (media.getTitle().equalsIgnoreCase(title)) {
+                return media;
+            }
+        }
+        return null;
+    }
+
+    // Phương thức lọc Media trong giỏ hàng theo ID hoặc tiêu đề
+    public void filterCart(String filterType, String filterValue) {
+        ArrayList<Media> filteredItems = new ArrayList<>();
+        for (Media media : itemsOrdered) {
+            if (filterType.equalsIgnoreCase("id") && Integer.toString(media.getId()).equals(filterValue)) {
+                filteredItems.add(media);
+            } else if (filterType.equalsIgnoreCase("title") && media.getTitle().equalsIgnoreCase(filterValue)) {
+                filteredItems.add(media);
+            }
+        }
+
+        if (filteredItems.isEmpty()) {
+            System.out.println("No media found with the given filter.");
+        } else {
+            System.out.println("Filtered media:");
+            for (Media media : filteredItems) {
+                System.out.println(media);
+            }
+        }
+    }
+
+    // Phương thức sắp xếp Media trong giỏ hàng theo tiêu đề
+    public void sortMediaByTitle() {
+        itemsOrdered.sort(Comparator.comparing(Media::getTitle));
+    }
+
+    // Phương thức sắp xếp Media trong giỏ hàng theo giá
+    public void sortMediaByCost() {
+        itemsOrdered.sort(Comparator.comparing(Media::getCost));
+    }
+
+    // Lấy danh sách media trong giỏ hàng
+    public ArrayList<Media> getItemsInCart() {
+        return itemsOrdered;
+    }
+
+    // Phương thức xóa tất cả các media trong giỏ hàng (sau khi đặt hàng)
+    public void clear() {
+        itemsOrdered.clear();
     }
 }

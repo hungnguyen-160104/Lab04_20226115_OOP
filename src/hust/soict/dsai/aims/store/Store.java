@@ -38,4 +38,14 @@ public class Store {
     public boolean isMediaInStore(Media media) {
         return itemsInStore.contains(media);  // Kiểm tra xem media có trong cửa hàng hay không
     }
+
+    // Tìm kiếm Media trong cửa hàng theo tiêu đề
+    public Media searchMedia(String title) {
+        for (Media media : itemsInStore) {
+            if (media.getTitle().equalsIgnoreCase(title)) {
+                return media;  // Trả về media nếu tìm thấy
+            }
+        }
+        return null;  // Trả về null nếu không tìm thấy
+    }
 }
