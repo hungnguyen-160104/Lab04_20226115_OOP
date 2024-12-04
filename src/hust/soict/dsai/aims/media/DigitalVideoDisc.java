@@ -52,6 +52,7 @@ public class DigitalVideoDisc extends Media implements Playable {
         System.out.println("DVD length: " + this.getLength() + " minutes");
     }
 
+    // Phương thức toString() để in thông tin đối tượng ra màn hình
     @Override
     public String toString() {
         return "DigitalVideoDisc [id=" + getId() + ", title=" + getTitle() + ", category=" + getCategory() + 
