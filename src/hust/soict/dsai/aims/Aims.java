@@ -22,12 +22,14 @@ public class Aims {
         aStore.addMedia(book1);
 
         // Hiển thị các sản phẩm trong cửa hàng
+        System.out.println("Items in store before removal:");
         aStore.displayItemsInStore();
 
         // Xóa một sản phẩm khỏi cửa hàng
         aStore.removeMedia(dvd1);
 
         // Hiển thị lại các sản phẩm sau khi xóa
+        System.out.println("\nItems in store after removal:");
         aStore.displayItemsInStore();
     }
 }

@@ -47,7 +47,7 @@ public abstract class Media {
         this.cost = cost;
     }
 
-    // Override equals() để so sánh dựa trên title
+    // Override equals() để so sánh đối tượng Media dựa trên title
     @Override
     public boolean equals(Object obj) {
         // Kiểm tra nếu đối tượng truyền vào là đối tượng Media và cùng loại
@@ -65,6 +65,6 @@ public abstract class Media {
         return this.title != null && this.title.equals(otherMedia.title);
     }
 
-    // Phương thức toString abstract
+    // Phương thức toString abstract - sẽ được ghi đè trong các lớp con
     public abstract String toString();
 }
