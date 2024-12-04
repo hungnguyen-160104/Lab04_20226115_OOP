@@ -47,6 +47,24 @@ public abstract class Media {
         this.cost = cost;
     }
 
-    // Abstract method to override in subclasses
+    // Override equals() để so sánh dựa trên title
+    @Override
+    public boolean equals(Object obj) {
+        // Kiểm tra nếu đối tượng truyền vào là đối tượng Media và cùng loại
+        if (this == obj) {
+            return true; // Nếu là cùng đối tượng (same object)
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false; // Nếu obj là null hoặc không phải đối tượng cùng loại
+        }
+
+        // Ép kiểu obj thành Media
+        Media otherMedia = (Media) obj;
+
+        // So sánh title
+        return this.title != null && this.title.equals(otherMedia.title);
+    }
+
+    // Phương thức toString abstract
     public abstract String toString();
 }
