@@ -3,53 +3,17 @@ package hust.soict.dsai.aims.media;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
-
-    private int id;
-    private String title;
-    private String category;
-    private float cost;
+public class Book extends Media {
     private List<String> authors = new ArrayList<>();
 
 
-    public Book() {
+    public Book(int id, String title, String category, float cost) {
+        super(id, title, category, cost);
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public float getCost() {
-        return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
-
-    // Thêm tác giả vào danh sách
     public void addAuthor(String authorName) {
-        if (!authors.contains(authorName)) { // Kiểm tra nếu chưa tồn tại
+        if (!authors.contains(authorName)) { 
             authors.add(authorName);
             System.out.println("Author \"" + authorName + "\" has been added.");
         } else {
@@ -57,13 +21,18 @@ public class Book {
         }
     }
 
-    // Xóa tác giả khỏi danh sách
     public void removeAuthor(String authorName) {
-        if (authors.contains(authorName)) { // Kiểm tra nếu tồn tại
+        if (authors.contains(authorName)) { 
             authors.remove(authorName);
             System.out.println("Author \"" + authorName + "\" has been removed.");
         } else {
             System.out.println("Author \"" + authorName + "\" does not exist.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Book [id=" + getId() + ", title=" + getTitle() + ", category=" + getCategory() +
+                ", cost=" + getCost() + ", authors=" + authors + "]";
     }
 }
