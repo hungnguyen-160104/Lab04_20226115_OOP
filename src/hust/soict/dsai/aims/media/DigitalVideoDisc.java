@@ -1,28 +1,8 @@
 package hust.soict.dsai.aims.media;
 
-public class DigitalVideoDisc extends Media {
+public class DigitalVideoDisc extends Media implements Playable {
     private String director;
     private int length;
-
-    // Getter cho director
-    public String getDirector() {
-        return director;
-    }
-
-    // Setter cho director
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    // Getter cho length
-    public int getLength() {
-        return length;
-    }
-
-    // Setter cho length
-    public void setLength(int length) {
-        this.length = length;
-    }
 
     // Constructor với đầy đủ tham số
     public DigitalVideoDisc(int id, String title, String category, float cost, String director, int length) {
@@ -45,7 +25,33 @@ public class DigitalVideoDisc extends Media {
         this.length = 0;
     }
 
-    // Phương thức toString để hiển thị thông tin của DigitalVideoDisc
+    // Getter cho director
+    public String getDirector() {
+        return director;
+    }
+
+    // Setter cho director
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    // Getter cho length
+    public int getLength() {
+        return length;
+    }
+
+    // Setter cho length
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    // Phương thức play() theo giao diện Playable
+    @Override
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength() + " minutes");
+    }
+
     @Override
     public String toString() {
         return "DigitalVideoDisc [id=" + getId() + ", title=" + getTitle() + ", category=" + getCategory() + 
