@@ -1,27 +1,33 @@
 package hust.soict.dsai.aims;
 
-import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
-import hust.soict.dsai.aims.media.Book;  // Giả sử chúng ta có đối tượng Book (nếu cần thiết)
+import hust.soict.dsai.aims.media.CompactDisc;
+import hust.soict.dsai.aims.media.Book;
+import hust.soict.dsai.aims.store.Store;
 
 public class Aims {
     public static void main(String[] args) {
 
-        // Tạo giỏ hàng
-        Cart anOrder = new Cart();
+        // Tạo cửa hàng
+        Store aStore = new Store();
 
-        // Tạo các đối tượng DigitalVideoDisc
+        // Tạo các đối tượng DigitalVideoDisc, CompactDisc và Book
         DigitalVideoDisc dvd1 = new DigitalVideoDisc(1, "The Lion King", "Animation", 19.95f, "Roger Allers", 87);
-        anOrder.addMedia(dvd1);  // Thêm vào giỏ hàng
+        CompactDisc cd1 = new CompactDisc(2, "Abbey Road", "Music", 24.95f, 47, "George Martin", "The Beatles");
+        Book book1 = new Book(3, "Harry Potter", "Fantasy", 29.99f);
 
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc(2, "Star Wars", "Science Fiction", 24.95f, "George Lucas", 121);
-        anOrder.addMedia(dvd2);  // Thêm vào giỏ hàng
+        // Thêm các sản phẩm vào cửa hàng
+        aStore.addMedia(dvd1);
+        aStore.addMedia(cd1);
+        aStore.addMedia(book1);
 
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc(3, "Aladdin", "Animation", 18.99f);
-        anOrder.addMedia(dvd3);  // Thêm vào giỏ hàng
+        // Hiển thị các sản phẩm trong cửa hàng
+        aStore.displayItemsInStore();
 
-        // In ra tổng chi phí
-        System.out.println("Total Cost is: ");
-        System.out.println(anOrder.totalCost());  // Tính tổng chi phí và in ra
+        // Xóa một sản phẩm khỏi cửa hàng
+        aStore.removeMedia(dvd1);
+
+        // Hiển thị lại các sản phẩm sau khi xóa
+        aStore.displayItemsInStore();
     }
 }
