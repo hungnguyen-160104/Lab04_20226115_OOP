@@ -4,18 +4,18 @@ import hust.soict.dsai.aims.media.Media;
 import java.util.ArrayList;
 
 public class Store {
-    private ArrayList<Media> itemsInStore = new ArrayList<>();  // Thay đổi thành ArrayList<Media>
+    private ArrayList<Media> itemsInStore = new ArrayList<>();  // Dùng ArrayList để lưu trữ các đối tượng Media
 
     // Thêm một Media vào cửa hàng
     public void addMedia(Media media) {
-        itemsInStore.add(media);  // Thêm vào danh sách itemsInStore
+        itemsInStore.add(media);  // Thêm media vào danh sách itemsInStore
         System.out.println(media.getTitle() + " has been added to the store.");
     }
 
     // Xóa một Media khỏi cửa hàng
     public void removeMedia(Media media) {
         if (itemsInStore.contains(media)) {
-            itemsInStore.remove(media);  // Xóa khỏi danh sách itemsInStore
+            itemsInStore.remove(media);  // Xóa media khỏi danh sách
             System.out.println(media.getTitle() + " has been removed from the store.");
         } else {
             System.out.println(media.getTitle() + " was not found in the store.");
@@ -29,8 +29,13 @@ public class Store {
         } else {
             System.out.println("Items in store: ");
             for (Media media : itemsInStore) {
-                System.out.println(media);
+                System.out.println(media);  // Gọi phương thức toString() của đối tượng Media để in ra thông tin
             }
         }
+    }
+
+    // Kiểm tra sự tồn tại của một Media trong cửa hàng
+    public boolean isMediaInStore(Media media) {
+        return itemsInStore.contains(media);  // Kiểm tra xem media có trong cửa hàng hay không
     }
 }
