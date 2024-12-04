@@ -1,43 +1,46 @@
 package hust.soict.dsai.aims.cart;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
+
+import hust.soict.dsai.aims.media.Media;
+import java.util.ArrayList;
 
 public class Cart {
-    private static final int MAX_NUMBERS_ORDERED = 20; 
-    private DigitalVideoDisc[] itemsOrdered = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
-    private int qtyOrdered = 0;
-    public void addDigitalVideoDisc(DigitalVideoDisc disc) {
-        if (qtyOrdered < MAX_NUMBERS_ORDERED) {
-            itemsOrdered[qtyOrdered] = disc;
-            qtyOrdered++;
-            System.out.println("The disc has been added.");
+    // Dùng ArrayList<Media> để chứa các đối tượng Media
+    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+
+    // Phương thức thêm Media vào giỏ hàng
+    public void addMedia(Media media) {
+        itemsOrdered.add(media);
+        System.out.println(media.getTitle() + " has been added to the cart.");
+    }
+
+    // Phương thức xóa Media khỏi giỏ hàng
+    public void removeMedia(Media media) {
+        if (itemsOrdered.contains(media)) {
+            itemsOrdered.remove(media);
+            System.out.println(media.getTitle() + " has been removed from the cart.");
         } else {
-            System.out.println("The cart is almost full. Cannot add more discs.");
+            System.out.println(media.getTitle() + " is not in the cart.");
         }
     }
-    public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
-        boolean found = false;
-        for (int i = 0; i < qtyOrdered; i++) {
-            if (itemsOrdered[i].equals(disc)) {
-                found = true;
-    
-                for (int j = i; j < qtyOrdered - 1; j++) {
-                    itemsOrdered[j] = itemsOrdered[j + 1];
-                }
-                itemsOrdered[qtyOrdered - 1] = null;
-                qtyOrdered--;
-                System.out.println("The disc has been removed.");
-                break;
-            }
-        }
-        if (!found) {
-            System.out.println("The disc was not found in the cart.");
-        }
-    }
+
+    // Phương thức tính tổng giá trị của giỏ hàng
     public float totalCost() {
         float total = 0;
-        for (int i = 0; i < qtyOrdered; i++) {
-            total += itemsOrdered[i].getCost();
+        for (Media media : itemsOrdered) {
+            total += media.getCost();
         }
         return total;
+    }
+
+    // Phương thức hiển thị giỏ hàng
+    public void displayCart() {
+        if (itemsOrdered.isEmpty()) {
+            System.out.println("The cart is empty.");
+        } else {
+            System.out.println("Items in the cart:");
+            for (Media media : itemsOrdered) {
+                System.out.println(media);
+            }
+        }
     }
 }
